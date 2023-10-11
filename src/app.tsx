@@ -1,9 +1,10 @@
 import React from 'react'
+import Home from './screens/home'
 
 export default function App() {
   return (
     <div>
-      <h1>Test</h1>
+      <Home />
     </div>
   )
 }
