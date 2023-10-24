@@ -6,3 +6,11 @@ export interface products {
     description: string;
     url: string;
   }
+
+  export interface IItem {
+    id: number;
+    productName: string;
+    url: string;
+    price: number
+    description: string;
+  }

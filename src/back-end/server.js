@@ -49,6 +49,7 @@ app.get("/products", (req, res) => {
       console.log(err);
     });
 });
+
 app.get("/store", async (req, res) => {
   try {
     const storeData = await ThavmaDataModel.find({}).exec();
@@ -64,6 +65,11 @@ app.get("/store", async (req, res) => {
   }
 });
 
+app.use('/login', (req, res) => {
+  res.send({
+    token: '1234'
+  });
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

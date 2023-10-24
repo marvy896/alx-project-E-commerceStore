@@ -30,3 +30,9 @@
   width: 200px;
   height: 250px;
 }
+.divButton{
+    display: flex;
+    flex-direction: row;
+    place-items: center;
+    justify-content: space-between;
+}

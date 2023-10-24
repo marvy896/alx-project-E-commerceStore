@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import NavBar from "./navbar";
 import Store from "./store/store";
 
 export default function Home() {
-   return (
+  return (
     <div>
       <NavBar />
       <Store />
