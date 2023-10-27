@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import useCart from "../hooks/hooks";
+// import shoes from "../imagepage/shoes.jpg";
 
 export interface IItem {
   id: number;
@@ -31,17 +32,17 @@ export default function StoreItems({ id, productName, price, url, description }:
   };
   return (
     <div className="store-container">
-      {/* <img src={imgUrl} className="imgStore" /> */}
       <div
         className="imgStore"
         style={{ backgroundImage: `url(${url})` }}
       ></div>
-      <div className="prices">
+      <div className="product">
         <div>ID: {id}</div>
         <div>Product Name: {productName}</div>
         <div>Price: {price}</div>
         <div>Description: {description}</div>
-
+        {/* <img src={shoes}/> */}
+        <img src={"/imagepage"+url}/>
       </div>
       <div>
         {quantity === 0 ? (

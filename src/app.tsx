@@ -27,7 +27,6 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/cart" element={<Cart />} />
-      {/* Add other routes as needed */}
     </Routes>
   );
 }

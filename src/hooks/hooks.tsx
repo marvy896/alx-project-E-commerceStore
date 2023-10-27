@@ -81,13 +81,14 @@ class cartsInteraction {
     // }
     return total;
   }
-  getTotalPrice() {
-    let total = 0;
-    for (const cartsItem of this.cartlog) {
-      total += cartsItem.price;
+  getTotalPrice(){
+    let total = 0
+    for (const cartsItem of this.cartlog){
+      total += cartsItem.price
     }
-    return total.toFixed(2);
+      return total;
   }
+  
 }
 
 export default useCart;

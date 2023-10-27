@@ -1,10 +1,9 @@
 .store-container {
-  width: 94%;
   height: 90%;
   padding: 3%;
   display: flex;
   flex-wrap: wrap;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -18,8 +17,8 @@
 }
 .store-Items {
   display: grid;
-  grid-template-columns: 100px 100px 100px;
-  grid-template-rows: 100px 100px 100px;
+  grid-template-columns: 200px 200px 200px;
+  grid-template-rows: 200px 200px 200px;
   gap: 200px 200px;
 }
 .product {
@@ -35,4 +34,51 @@
     flex-direction: row;
     place-items: center;
     justify-content: space-between;
+}
+.prices {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.pricesbutton {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  place-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.pricesbutton button {
+  width: 40px;
+  height: 40px;
+  color: aliceblue;
+  background-color: rgb(0, 140, 255);
+  border-radius: 10px;
+}
+.removebtn {
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  height: 30px;
+}
+.divremovebtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  place-content: center;
+  align-items: center;
+}
+.cartbuttonDiv {
+  width: 100px;
+  height: 100% auto;
+}
+.cartbutton {
+  background-color: rgb(0, 140, 255);
+  color: white;
+  border-radius: 10px;
+  height: 100%;
+  width: 120px;
+  margin: 0;
 }

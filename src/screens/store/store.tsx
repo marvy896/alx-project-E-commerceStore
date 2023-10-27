@@ -4,12 +4,14 @@ import "./store.css";
 import Button from "react-bootstrap/Button";
 import StoreItems from "../../hooks/storeInterface";
 import useCart from "../../hooks/hooks";
+import { Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function Store() {
   const [storeData, setStore] = useState<products[]>([]);
-  let cartinNav= useCart()
-  let quantityCart = cartinNav.getTotalquantity()
-  
+  let cartinNav = useCart();
+  let quantityCart = cartinNav.getTotalquantity();
+
   useEffect(() => {
     fetch("http://localhost:4000/store")
       .then((res) => {
@@ -26,7 +28,6 @@ export default function Store() {
       });
   }, []);
 
-
   return (
     <div className="store-container">
       <div className="store-header">
@@ -36,16 +37,18 @@ export default function Store() {
       <div> No. of Products bought {quantityCart}</div>
       <div className="store-Items">
         {storeData.map((storeItem) => (
-          <div key={storeItem._id} className="product">        
+          <div key={storeItem._id}>
             <div key={storeItem.id}>
               <StoreItems {...storeItem} />
             </div>
           </div>
         ))}
       </div>
-      <Button variant="secondary" size="lg">
-        Cart
-      </Button>
+      <Nav.Link as={Link} to="/cart">
+        <Button variant="secondary" size="lg">
+          Cart
+        </Button>
+      </Nav.Link>
     </div>
   );
 }

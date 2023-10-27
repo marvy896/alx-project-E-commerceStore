@@ -10,6 +10,23 @@ const uri = "mongodb://127.0.0.1:27017/thavmaHairs";
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("dist"));
+app.use(express.static('imagepage'))
+app.use('/imagepage', express.static('imagepage'))
+
+//to upload image
+// const multer = require('multer')
+
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, 'public')
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, Date.now() + '-' +file.originalname)
+//   }
+// })
+// const upload = multer({ storage: storage }).single('file')
+
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   next();
