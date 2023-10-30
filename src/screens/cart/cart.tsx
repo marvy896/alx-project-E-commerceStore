@@ -16,8 +16,10 @@ import useCart from "../../hooks/hooks";
 export default function Cart() {
   let carts = useCart();
   let cartes = carts.cartlog;
-   let cartCheckout = carts.getTotalPrice();
-  let cartQuantity = carts.getTotalquantity();
+  let cartCheckout = carts.getTotalPrice();
+  let cartQuantity = carts.getTotalQuantity();
+  let total = cartCheckout + 10
+  let genTotal = total + 20
 
   const removebtn = (id: number) => {
     carts.removeProduct(id);
@@ -43,7 +45,9 @@ export default function Cart() {
                     <div className="d-flex justify-content-between align-items-center mb-4">
                       <div>
                         <p className="mb-1">Shopping cart</p>
-                        <p className="mb-0">You have {cartQuantity} items in your cart</p>
+                        <p className="mb-0">
+                          You have {cartQuantity} items in your cart
+                        </p>
                       </div>
                       <div>
                         <p>
@@ -55,50 +59,54 @@ export default function Cart() {
                         </p>
                       </div>
                     </div>
-                    {cartes.map((CARTS) =>
-                    <MDBCard className="mb-3">
-                      <MDBCardBody>
-                        <div className="d-flex justify-content-between">
-                          <div className="d-flex flex-row align-items-center">
-                            <div>
-                              <MDBCardImage
-                                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
-                                fluid
-                                className="rounded-3"
-                                style={{ width: "65px" }}
-                                alt="Shopping item"
-                              />
+                    {cartes.map((CARTS) => (
+                      <MDBCard className="mb-3">
+                        <MDBCardBody>
+                          <div className="d-flex justify-content-between">
+                            <div className="d-flex flex-row align-items-center">
+                              <div>
+                                <MDBCardImage
+                                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                                  fluid
+                                  className="rounded-3"
+                                  style={{ width: "65px" }}
+                                  alt="Shopping item"
+                                />
+                              </div>
+                              <div className="ms-3" key={CARTS.productId}>
+                                <MDBTypography tag="h5">
+                                  {CARTS.productName}
+                                </MDBTypography>
+                                <p className="small mb-0"></p>
+                                <button
+                                  onClick={() => removebtn(CARTS.productId)}
+                                >
+                                  Remove
+                                </button>
+                              </div>
                             </div>
-                            <div className="ms-3" key={CARTS.productId} >
-                              <MDBTypography tag="h5">
-                              {CARTS.productName}
-                              </MDBTypography>
-                              <p className="small mb-0"></p>
-                              <button onClick={() => removebtn(CARTS.productId)}>Remove</button>
+                            <div className="d-flex flex-row align-items-center">
+                              <div style={{ width: "50px" }}>
+                                <MDBTypography
+                                  tag="h5"
+                                  className="fw-normal mb-0"
+                                >
+                                  {CARTS.quantity}
+                                </MDBTypography>
+                              </div>
+                              <div style={{ width: "80px" }}>
+                                <MDBTypography tag="h5" className="mb-0">
+                                  {CARTS.price}
+                                </MDBTypography>
+                              </div>
+                              <a href="#!" style={{ color: "#cecece" }}>
+                                <MDBIcon fas icon="trash-alt" />
+                              </a>
                             </div>
                           </div>
-                          <div className="d-flex flex-row align-items-center">
-                            <div style={{ width: "50px" }}>
-                              <MDBTypography
-                                tag="h5"
-                                className="fw-normal mb-0"
-                              >
-                                {CARTS.quantity}
-                              </MDBTypography>
-                            </div>
-                            <div style={{ width: "80px" }}>
-                              <MDBTypography tag="h5" className="mb-0">
-                              {CARTS.price}
-                              </MDBTypography>
-                            </div>
-                            <a href="#!" style={{ color: "#cecece" }}>
-                              <MDBIcon fas icon="trash-alt" />
-                            </a>
-                          </div>
-                        </div>
-                      </MDBCardBody>
-                    </MDBCard>
-                    )}
+                        </MDBCardBody>
+                      </MDBCard>
+                    ))}
                   </MDBCol>
 
                   <MDBCol lg="5">
@@ -184,7 +192,7 @@ export default function Cart() {
 
                         <div className="d-flex justify-content-between">
                           <p className="mb-2">Subtotal</p>
-                          <p className="mb-2">$4798.00</p>
+                          <p className="mb-2">${cartCheckout}</p>
                         </div>
 
                         <div className="d-flex justify-content-between">
@@ -194,12 +202,12 @@ export default function Cart() {
 
                         <div className="d-flex justify-content-between">
                           <p className="mb-2">Total (Incl. taxes)</p>
-                          <p className="mb-2">$4818.00</p>
+                          <p className="mb-2">${total}</p>
                         </div>
 
                         <MDBBtn color="info" block size="lg">
                           <div className="d-flex justify-content-between">
-                            <span>{cartCheckout}</span>
+                            <span>${genTotal}</span>
                             <span>
                               Checkout{" "}
                               <i className="fas fa-long-arrow-alt-right ms-2"></i>

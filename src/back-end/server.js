@@ -10,8 +10,10 @@ const uri = "mongodb://127.0.0.1:27017/thavmaHairs";
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("dist"));
-app.use(express.static('imagepage'))
-app.use('/imagepage', express.static('imagepage'))
+app.use('/login', express.static('dist'))
+app.use('/cart', express.static('dist'))
+app.use('./imagepage', express.static('images'))
+app.use('./imagepage', express.static('imagepage'))
 
 //to upload image
 // const multer = require('multer')

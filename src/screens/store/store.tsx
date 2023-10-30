@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 export default function Store() {
   const [storeData, setStore] = useState<products[]>([]);
   let cartinNav = useCart();
-  let quantityCart = cartinNav.getTotalquantity();
+  let quantityCart = cartinNav.getTotalQuantity();
 
   useEffect(() => {
     fetch("http://localhost:4000/store")
@@ -35,15 +35,18 @@ export default function Store() {
         <h3>My Hair My Pride!</h3>
       </div>
       <div> No. of Products bought {quantityCart}</div>
-      <div className="store-Items">
-        {storeData.map((storeItem) => (
-          <div key={storeItem._id}>
-            <div key={storeItem.id}>
-              <StoreItems {...storeItem} />
+      <div className="store-page">
+        <div className="store-Items">
+          {storeData.map((storeItem) => (
+            <div key={storeItem._id}>
+              <div key={storeItem.id}>
+                <StoreItems {...storeItem} />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
+
       <Nav.Link as={Link} to="/cart">
         <Button variant="secondary" size="lg">
           Cart

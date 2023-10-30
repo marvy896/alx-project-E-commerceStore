@@ -9,6 +9,22 @@
   align-items: center;
   color: beige;
 }
+.store-page{
+  display: flex;
+  background-color: antiquewhite;
+  margin: 10px auto;
+  padding: 20px;
+  color: black;
+  border-radius: 10px;
+}
+.store-inner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  place-items: center;
+  margin: 10px auto;
+}
 .store-header {
   display: flex;
   flex-direction: column;
@@ -19,16 +35,21 @@
   display: grid;
   grid-template-columns: 200px 200px 200px;
   grid-template-rows: 200px 200px 200px;
-  gap: 200px 200px;
+  gap: 257px 132px;
+  padding: 10px;
+  margin: 10px auto;
 }
 .product {
-  color: white;
-  border: 3px solid white;
+  color:  rgb(3, 8, 68);;
+  border: 3px solid rgb(3, 3, 3);
   border-radius: 10px;
   padding: 10px;
-  width: 200px;
-  height: 250px;
+  width: auto;
+  height: auto;
+  /* margin: 30px; */
+  padding: 10px;
 }
+
 .divButton{
     display: flex;
     flex-direction: row;
@@ -40,7 +61,9 @@
   flex-direction: row;
   justify-content: space-between;
 }
-
+/* .price-container{
+  margin-bottom: 15px;
+} */
 .pricesbutton {
   padding: 5px;
   display: flex;
@@ -53,15 +76,30 @@
 .pricesbutton button {
   width: 40px;
   height: 40px;
-  color: aliceblue;
-  background-color: rgb(0, 140, 255);
+  color:  rgb(244, 244, 245);
+  background-color: rgb(6, 66, 19);
   border-radius: 10px;
+}
+.pricesbutton span {
+  color:  rgb(3, 8, 68);
+}
+.inCart{
+  color:  rgb(3, 8, 68);
+}
+.add-sub{
+  border-radius: 10px;
+  height: 50px;
+  padding: 0%;
+  margin: 0%;
+  color: white;
 }
 .removebtn {
   background-color: red;
-  color: white;
+  color: rgb(2, 2, 2);
   border-radius: 10px;
-  height: 30px;
+  height: 50px;
+  padding: 0%;
+  margin: 0%;
 }
 .divremovebtn {
   display: flex;
@@ -73,12 +111,27 @@
 .cartbuttonDiv {
   width: 100px;
   height: 100% auto;
+  margin: 10px;
+  padding: 5px;
 }
 .cartbutton {
-  background-color: rgb(0, 140, 255);
+  background-color: rgb(3, 8, 68);
   color: white;
   border-radius: 10px;
   height: 100%;
   width: 120px;
   margin: 0;
+}
+.img-product{
+  background-color: black; 
+    width: 200px; 
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img-product img {
+  width: 100%; 
+  height: auto; 
 }
