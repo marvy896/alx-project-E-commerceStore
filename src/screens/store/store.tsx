@@ -54,7 +54,7 @@ export default function Store({ user }: StoreProps) {
 
       <Nav.Link as={Link} to="/cart">
         <Button variant="secondary" size="lg">
-          Cart
+          {user} continue to Cart
         </Button>
       </Nav.Link>
     </div>
