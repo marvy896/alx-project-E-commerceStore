@@ -123,7 +123,7 @@
   margin: 0;
 }
 .img-product{
-  background-color: black; 
+  /* background-color: black;  */
     width: 200px; 
     height: 200px;
     overflow: hidden;

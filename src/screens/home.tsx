@@ -2,11 +2,15 @@ import React from "react";
 import NavBar from "./navbar";
 import Store from "./store/store";
 
-export default function Home() {
+type HomeProps = {
+  user: string;
+};
+
+export default function Home({ user }: HomeProps) {
   return (
     <div>
       <NavBar />
-      <Store />
+      <Store user={user} />
     </div>
   );
 }

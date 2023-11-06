@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import smile from "../../imagepage/smile1.jpg";
+import smile from "./imagepage/smile1.jpg";
 import "./Login.css";
 
 async function loginUser(credentials) {
@@ -13,7 +13,7 @@ async function loginUser(credentials) {
   }).then((data) => data.json());
 }
 
-export default function Login({ setToken }) {
+function Login({ setToken, setLoggedInUser }) {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [showLoginForm, setShowLoginForm] = useState(false);
@@ -25,8 +25,8 @@ export default function Login({ setToken }) {
       password,
     });
     setToken(token);
-  };
-
+    setLoggedInUser(username); 
+  }
   return (
     <div className="landing-Page">
       <div className="header-box">
@@ -36,40 +36,36 @@ export default function Login({ setToken }) {
         <div>
           <img src={smile} className="smile" />
         </div>
-        <div >
+        <div>
           <div className="inner-div">
-            We deliver the best abd ufifjn cpfufjm bjiid susdif sdodhohosohosd
-            nosoosodhdshdidbdhs <br /> y8tt8stta97tsv gaugfiydfyifaiv hhbaodo
-            oihaipap
-            <div>
+            We deliver the best and offer a wide range of products. <br />
+            {showLoginForm ? (
               <div className="login-wrapper">
                 <h1 className="login">Please Log In</h1>
-                {showLoginForm ? (
-                  <form onSubmit={handleSubmit}>
-                    <label>
-                      <p>Username</p>
-                      <input
-                        type="text"
-                        onChange={(e) => setUserName(e.target.value)}
-                      />
-                    </label>
-                    <label>
-                      <p>Password</p>
-                      <input
-                        type="password"
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                    </label>
-                    <div>
-                      <button type="submit">Submit</button>
-                    </div>
-                  </form>
-                ) : (
-                  // Render a "Login" button when showLoginForm is false
-                  <button onClick={() => setShowLoginForm(true)}>Login</button>
-                )}
+                <form onSubmit={handleSubmit}>
+                  <label>
+                    <p>Username</p>
+                    <input
+                      type="text"
+                      onChange={(e) => setUserName(e.target.value)}
+                    />
+                  </label>
+                  <label>
+                    <p>Password</p>
+                    <input
+                      type="password"
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </label>
+                  <div>
+                    <button type="submit">Submit</button>
+                  </div>
+                </form>
               </div>
-            </div>
+            ) : (
+              // Render a "Login" button when showLoginForm is false
+              <button onClick={() => setShowLoginForm(true)}>Login</button>
+            )}
           </div>
         </div>
       </div>
@@ -79,4 +75,7 @@ export default function Login({ setToken }) {
 
 Login.propTypes = {
   setToken: PropTypes.func.isRequired,
+  setLoggedInUser: PropTypes.func.isRequired,
 };
+
+export default Login;

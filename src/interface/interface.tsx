@@ -4,13 +4,18 @@ export interface products {
     productName: string;
     price: number;
     description: string;
-    url: string;
+    Image: string;
   }
 
   export interface IItem {
     id: number;
     productName: string;
-    url: string;
+    Image: string;
     price: number
     description: string;
+    user?: string;
   }
+  
+  export interface User{
+    username: string;
+  };

@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-// const products = require("../interface/interface");
+
 
 const app = express();
 const port = 4000;
@@ -58,7 +58,7 @@ const ThavmaDataSchema = new mongoose.Schema({
 
 const ThavmaDataModel = mongoose.model("ThavmaData", ThavmaDataSchema);
 
-app.get("/products", (req, res) => {
+app.get("/products", (_req, res) => {
   db.getCollection('ThavmaData').find({});
   ThavmaDataModel.find({})
     .then(function (ThavmaData) {
@@ -86,7 +86,7 @@ app.get("/store", async (req, res) => {
 
 app.use('/login', (req, res) => {
   res.send({
-    token: '1234'
+    token: '1234',
   });
 });
 

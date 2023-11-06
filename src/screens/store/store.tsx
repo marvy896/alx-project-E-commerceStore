@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { products } from "../../interface/interface";
+import { IItem, products } from "../../interface/interface";
 import "./store.css";
 import Button from "react-bootstrap/Button";
 import StoreItems from "../../hooks/storeInterface";
@@ -7,7 +7,11 @@ import useCart from "../../hooks/hooks";
 import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export default function Store() {
+type StoreProps = {
+  user: string;
+};
+
+export default function Store({ user }: StoreProps) {
   const [storeData, setStore] = useState<products[]>([]);
   let cartinNav = useCart();
   let quantityCart = cartinNav.getTotalQuantity();
@@ -20,10 +24,10 @@ export default function Store() {
         }
         return res.json();
       })
-      .then((data) => {
+      .then((data: { StoreData: products[] }) => {
         setStore(data.StoreData);
       })
-      .catch((error) => {
+      .catch((error: Error) => {
         console.error("Fetch error:", error);
       });
   }, []);
@@ -33,6 +37,7 @@ export default function Store() {
       <div className="store-header">
         <h1>Thavmasios Hairs</h1>
         <h3>My Hair My Pride!</h3>
+        <h3>{user ? `Welcome, ${user}` : "Not logged in"}</h3>
       </div>
       <div> No. of Products bought {quantityCart}</div>
       <div className="store-page">
@@ -40,7 +45,7 @@ export default function Store() {
           {storeData.map((storeItem) => (
             <div key={storeItem._id}>
               <div key={storeItem.id}>
-                <StoreItems {...storeItem} />
+                <StoreItems {...storeItem} user={user} />
               </div>
             </div>
           ))}

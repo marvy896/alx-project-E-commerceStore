@@ -5,15 +5,16 @@ import useCart from "./hooks";
 export interface IItem {
   id: number;
   productName: string;
-  url: string;
+  Image: string;
   price: number;
   description: string;
+  user: string;
 }
 
 export type StoreItemProps = {
   id: number;
   productName: string;
-  url: string;
+  Image: string;
   price: number;
   description: string;
 };
@@ -22,7 +23,7 @@ export default function StoreItems({
   id,
   productName,
   price,
-  url,
+  Image,
   description,
 }: IItem) {
   let carts = useCart();
@@ -41,7 +42,7 @@ export default function StoreItems({
       <div className="store-inner">
         <div className="product">
           <div className="img-product">
-            <img src={url} />
+          <div className="img" style={{backgroundImage: `url(${Image})`}}></div>
           </div>
           <div>ID: {id}</div>
           <div>Product Name: {productName}</div>

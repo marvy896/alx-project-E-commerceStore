@@ -12,8 +12,10 @@ import {
   MDBTypography,
 } from "mdb-react-ui-kit";
 import useCart from "../../hooks/hooks";
+import { IItem } from "../../interface/interface";
 
-export default function Cart() {
+
+export default function Cart({ user }: IItem) {
   let carts = useCart();
   let cartes = carts.cartlog;
   let cartCheckout = carts.getTotalPrice();
@@ -46,7 +48,7 @@ export default function Cart() {
                       <div>
                         <p className="mb-1">Shopping cart</p>
                         <p className="mb-0">
-                          You have {cartQuantity} items in your cart
+                        {user ? `Welcome, ${user}. You have ${cartQuantity} items in your cart` : "Not logged in"}
                         </p>
                       </div>
                       <div>
