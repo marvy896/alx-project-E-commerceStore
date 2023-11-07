@@ -25,6 +25,17 @@ export default function Cart({ user }: IItem) {
   const removebtn = (id: number) => {
     carts.removeProduct(id);
   };
+
+  const [sortOption, setSortOption] = useState("");
+  const sortCartItems = (itemsArray) => {
+    let sortedItems = itemsArray.slice(); // Make a copy of the itemsArray
+    if (sortOption === "priceAsc") {
+      sortedItems.sort((a, b) => a.price - b.price);
+    } else if (sortOption === "priceDesc") {
+      sortedItems.sort((a, b) => b.price - a.price);
+    }
+    return sortedItems;
+  };
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
       <MDBContainer className="py-5 h-100">
@@ -55,14 +66,22 @@ export default function Cart({ user }: IItem) {
                       <div>
                         <p>
                           <span className="text-muted">Sort by:</span>
-                          <a href="#!" className="text-body">
-                            price
-                            <MDBIcon fas icon="angle-down mt-1" />
-                          </a>
+                          <select
+                            value={sortOption}
+                            onChange={(e) => setSortOption(e.target.value)}
+                          >
+                            <option value="">-- Sort by --</option>
+                            <option value="priceAsc" className="text-body">
+                              Price: Lowest to Highest
+                            </option>
+                            <option value="priceDesc" className="text-body">
+                              Price: Highest to Lowest
+                            </option>
+                          </select>
                         </p>
                       </div>
                     </div>
-                    {cartes.map((CARTS) => (
+                    {sortCartItems(cartes).map((CARTS) => (
                       <MDBCard className="mb-3">
                         <MDBCardBody>
                           <div className="d-flex justify-content-between">

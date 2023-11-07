@@ -7,7 +7,7 @@ import Store from "./screens/home";
 
 function App() {
   const [token, setToken] = useState(null);
-  const [loggedInUser, setLoggedInUser] = useState({ username: "" });
+  const [loggedInUser, setLoggedInUser] = useState("");
 
   useEffect(() => {
     // Check if a user token is stored in sessionStorage
@@ -20,6 +20,7 @@ function App() {
     const storedUser = sessionStorage.getItem("user");
     if (storedUser) {
       setLoggedInUser(JSON.parse(storedUser));
+      setLoggedInUser(username)
     }
   }, []);
 
@@ -31,6 +32,7 @@ function App() {
   const handleSetLoggedInUser = (user) => {
     sessionStorage.setItem("user", JSON.stringify(user));
     setLoggedInUser(user);
+    setLoggedInUser(username)
   };
 
 
