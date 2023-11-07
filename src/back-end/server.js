@@ -90,6 +90,22 @@ app.use('/login', (req, res) => {
   });
 });
 
+app.get('/search', (req, res) => {
+  const query = req.query.query || ''; // Get the search query from the request query parameters
+
+  // Implement the search logic to filter products based on the query
+  ThavmaDataModel.find({
+    productName: { $regex: new RegExp(query, 'i') }, // Case-insensitive search
+  })
+    .then((searchResults) => {
+      res.status(200).json({ results: searchResults });
+    })
+    .catch((error) => {
+      console.error('Error searching for products:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });

@@ -1,5 +1,4 @@
-import { text } from "express";
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -7,52 +6,73 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { IItem } from "../interface/interface";
+import { error } from "console";
 
-export default function NavBar() {
-  let [storeItems, setStoreItems] = useState<IItem[]>([]);
-  let [sortItems, setSortItems] = useState("");
-  let [maintext, setMainText] = useState("");
-  let [text, setText] = useState("");
-  let [textDisplay, setTextDisplay] = useState<IItem[]>([]);
+type NavBarProps = {
+  onSearch: (searchText: string) => void; // Pass a callback for handling search
+};
 
-  //to sort prices
-  const SortPrd = (itemsArray?: IItem[]) => {
-    itemsArray = itemsArray || storeItems;
-    let sortPrd: IItem[];
-    if (sortItems == "LH") {
-      sortPrd = itemsArray.sort((a, b) => a.price - b.price);
-    } else if (sortItems == "HL") {
-      sortPrd = itemsArray.sort((b, a) => a.price - b.price);
-    } else if (sortItems == "AZ") {
-      sortPrd = itemsArray.sort((a, b) =>
-        a.productName.localeCompare(b.productName)
-      );
-    } else if (sortItems == "ZA") {
-      sortPrd = itemsArray.sort((b, a) =>
-        a.productName.localeCompare(b.productName)
-      );
-    } else if (sortItems == "") {
-      sortPrd = itemsArray;
-    } else {
-      throw new Error("Invalid sort option: " + sortItems);
+export default function NavBar({ onSearch }: NavBarProps) {
+  const [storeItems, setStoreItems] = useState<IItem[]>([]);
+  const [sortItems, setSortItems] = useState<string>("");
+  const [text, setText] = useState<string>("");
+
+  const SortPrd = (itemsArray: IItem[] = storeItems) => {
+    let sortPrd: IItem[] = itemsArray.slice(); // Make a copy of the itemsArray
+    if (sortItems === "LH") {
+      sortPrd.sort((a, b) => a.price - b.price);
+    } else if (sortItems === "HL") {
+      sortPrd.sort((a, b) => b.price - a.price);
+    } else if (sortItems === "AZ") {
+      sortPrd.sort((a, b) => a.productName.localeCompare(b.productName));
+    } else if (sortItems === "ZA") {
+      sortPrd.sort((a, b) => b.productName.localeCompare(a.productName));
     }
-    console.log(sortPrd);
     return sortPrd;
   };
-
+  
   const searchProducts = (e: FormEvent) => {
     e.preventDefault();
-    let searchPrd = storeItems.filter(
-      (x) =>
-        x.productName.toUpperCase().includes(text.toUpperCase()) ||
-        x.price <= parseInt(text)
-    );
-    setTextDisplay(SortPrd(searchPrd));
-    setMainText(text);
+    const searchPrd = storeItems.filter((x) => {
+      return (
+        (x.productName || "")
+          .toUpperCase()
+          .includes((text || "").toUpperCase()) ||
+        false ||
+        (x.price && x.price <= parseInt(text))
+      );
+    });
+    onSearch(text); // Pass the search text to the parent component
+    SortPrd(searchPrd);
   };
 
-  let mappedArrays = maintext == "" ? storeItems : textDisplay;
-  SortPrd(mappedArrays);
+  const GetProducts = async (callback) => {
+    try {
+      const response = await fetch("http://localhost:4000/store");
+      
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      
+      const data = await response.json();
+      callback(null, data.StoreData);
+    } catch (error) {
+      console.error("Fetch error:", error);
+      callback(error, null);
+    }
+  };
+  
+
+  GetProducts((error, data) => {
+    if (error) {
+      // Handle the error here
+      console.error("Error fetching data:", error);
+    } else {
+      // Update the state with the data
+      setStoreItems(data);
+    }
+  });
+   
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -74,7 +94,7 @@ export default function NavBar() {
               Cart
             </Nav.Link>
           </Nav>
-          <Form className="d-flex">
+          <Form className="d-flex" onSubmit={searchProducts}>
             <Form.Control
               type="search"
               placeholder="Search"
@@ -83,11 +103,11 @@ export default function NavBar() {
               value={text}
               onChange={(e) => setText(e.target.value)}
             />
-            <Button variant="outline-success" onClick={searchProducts}>
+            <Button variant="outline-success" type="submit">
               Search
             </Button>
           </Form>
-          <div>
+          {/* <div>
             <select
               value={sortItems}
               onChange={(e) => setSortItems(e.target.value)}
@@ -98,7 +118,7 @@ export default function NavBar() {
               <option value="AZ">By Name: A-Z</option>
               <option value="ZA">By Name: Z-A</option>
             </select>
-          </div>
+          </div> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>

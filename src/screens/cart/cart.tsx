@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import {
   MDBBtn,
   MDBCard,
@@ -14,14 +14,13 @@ import {
 import useCart from "../../hooks/hooks";
 import { IItem } from "../../interface/interface";
 
-
 export default function Cart({ user }: IItem) {
   let carts = useCart();
   let cartes = carts.cartlog;
   let cartCheckout = carts.getTotalPrice();
   let cartQuantity = carts.getTotalQuantity();
-  let total = cartCheckout + 10
-  let genTotal = total + 20
+  let total = cartCheckout + 10;
+  let genTotal = total + 20;
 
   const removebtn = (id: number) => {
     carts.removeProduct(id);
@@ -48,7 +47,9 @@ export default function Cart({ user }: IItem) {
                       <div>
                         <p className="mb-1">Shopping cart</p>
                         <p className="mb-0">
-                        {user ? `Welcome, ${user}. You have ${cartQuantity} items in your cart` : "Not logged in"}
+                          {user
+                            ? `Welcome, ${user}. You have ${cartQuantity} items in your cart`
+                            : "Not logged in"}
                         </p>
                       </div>
                       <div>
