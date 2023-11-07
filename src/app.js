@@ -4,7 +4,6 @@ import Home from "./screens/home";
 import Cart from "./screens/cart/cart";
 import Login from "./screens/login/login";
 import Store from "./screens/home";
-import { IItem } from "./interface/interface";
 
 function App() {
   const [token, setToken] = useState(null);

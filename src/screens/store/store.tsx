@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IItem, products } from "../../interface/interface";
+import { products } from "../../interface/interface";
 import "./store.css";
 import Button from "react-bootstrap/Button";
 import StoreItems from "../../hooks/storeInterface";

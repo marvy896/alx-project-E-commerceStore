@@ -63,7 +63,6 @@ function Login({ setToken, setLoggedInUser }) {
                 </form>
               </div>
             ) : (
-              // Render a "Login" button when showLoginForm is false
               <button onClick={() => setShowLoginForm(true)}>Login</button>
             )}
           </div>
