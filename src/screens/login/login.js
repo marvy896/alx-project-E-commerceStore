@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import smile from "./imagepage/smile1.jpg";
 import "./Login.css";
 
@@ -63,10 +64,16 @@ function Login({ setToken, setLoggedInUser }) {
                 </form>
               </div>
             ) : (
-              <button onClick={() => setShowLoginForm(true)}>Login</button>
+              <button onClick={() => setShowLoginForm(true)}>Admin Login</button>
             )}
           </div>
         </div>
+        <Link to="/registerUsers">
+          <button>Click here if not Admin</button>
+        </Link>
+        <Link to="/usersLogin">
+          <button>user Login</button>
+        </Link>
       </div>
     </div>
   );
