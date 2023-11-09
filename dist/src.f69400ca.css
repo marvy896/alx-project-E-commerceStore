@@ -1,0 +1,241 @@
+.store-container {
+  height: 90%;
+  padding: 3%;
+  display: flex;
+  flex-wrap: wrap;
+  /* overflow-y: auto; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: beige;
+}
+.store-page{
+  display: flex;
+  background-color: antiquewhite;
+  margin: 10px auto;
+  padding: 150px;
+  color: black;
+  border-radius: 10px;
+}
+.store-inner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  place-items: center;
+  margin: 10px auto;
+}
+.store-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.store-Items {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  grid-template-rows: 200px 200px 200px;
+  gap: 257px 132px;
+  padding: 10px;
+  margin: 10px auto;
+}
+.product {
+  color:  rgb(3, 8, 68);;
+  border: 3px solid rgb(3, 3, 3);
+  border-radius: 10px;
+  padding: 10px;
+  width: auto;
+  height: auto;
+  /* margin: 30px; */
+  padding: 10px;
+}
+
+.divButton{
+    display: flex;
+    flex-direction: row;
+    place-items: center;
+    justify-content: space-between;
+}
+.prices {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+/* .price-container{
+  margin-bottom: 15px;
+} */
+.pricesbutton {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  place-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.pricesbutton button {
+  width: 40px;
+  height: 40px;
+  color:  rgb(244, 244, 245);
+  background-color: rgb(6, 66, 19);
+  border-radius: 10px;
+}
+.pricesbutton span {
+  color:  rgb(3, 8, 68);
+}
+.inCart{
+  color:  rgb(3, 8, 68);
+}
+.add-sub{
+  border-radius: 10px;
+  height: 50px;
+  padding: 0%;
+  margin: 0%;
+  color: white;
+}
+.removebtn {
+  background-color: red;
+  color: rgb(2, 2, 2);
+  border-radius: 10px;
+  height: 50px;
+  padding: 0%;
+  margin: 0%;
+}
+.divremovebtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  place-content: center;
+  align-items: center;
+}
+.cartbuttonDiv {
+  width: 100px;
+  height: 100% auto;
+  margin: 10px;
+  padding: 5px;
+}
+.cartbutton {
+  background-color: rgb(3, 8, 68);
+  color: white;
+  border-radius: 10px;
+  height: 100%;
+  width: 120px;
+  margin: 0;
+}
+.img-product{
+  /* background-color: black;  */
+    width: 200px; 
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.img-product img {
+  width: 100%; 
+  height: auto; 
+}
+/* Login Form Styling */
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #f1f1f1;
+}
+
+/* Bordered form */
+form {
+  border: 3px solid #f1f1f1;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+/* Full-width inputs */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04aa6d;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+/* Landing Page Styling */
+.landing-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: antiquewhite;
+  border: 4px solid white;
+  padding: 20px;
+}
+
+.smile {
+  width: 550px;
+  height: 800px;
+}
+
+.inner-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+  color: black;
+}
+
+.login {
+  color: black;
+}
+
+.header-box {
+  color: white !important;
+  display: flex;
+  align-items: center;
+  place-items: center;
+  justify-content: center;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+    background-color: #011235;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+
+/*# sourceMappingURL=/src.f69400ca.css.map */

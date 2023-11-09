@@ -26,8 +26,9 @@ function Login({ setToken, setLoggedInUser }) {
       password,
     });
     setToken(token);
-    setLoggedInUser(username); 
-  }
+    setLoggedInUser(username);
+  };
+
   return (
     <div className="landing-Page">
       <div className="header-box">
@@ -35,11 +36,11 @@ function Login({ setToken, setLoggedInUser }) {
       </div>
       <div className="landing-inner">
         <div>
-          <img src={smile} className="smile" />
+          <img src={smile} className="smile" alt="Smile" />
         </div>
         <div>
           <div className="inner-div">
-            We deliver the best and offer a wide range of products. <br />
+            We deliver the best and offer a wide range of products.
             {showLoginForm ? (
               <div className="login-wrapper">
                 <h1 className="login">Please Log In</h1>
@@ -64,16 +65,28 @@ function Login({ setToken, setLoggedInUser }) {
                 </form>
               </div>
             ) : (
-              <button onClick={() => setShowLoginForm(true)}>Admin Login</button>
+              <button onClick={() => setShowLoginForm(true)}>
+                Admin Login
+              </button>
             )}
+            <Link to="/registerUsers">
+              <button>Click here if not Admin</button>
+            </Link>
+            <Link to="/usersLogin">
+              <button>user Login</button>
+            </Link>
+          </div>
+          <div className="additional-sections">
+            <section>
+              <h2>Our Products</h2>
+              <p>Explore our high-quality hair products and accessories.</p>
+            </section>
+            <section>
+              <h2>About Us</h2>
+              <p>Learn more about Thavmasios Hair Store and our mission.</p>
+            </section>
           </div>
         </div>
-        <Link to="/registerUsers">
-          <button>Click here if not Admin</button>
-        </Link>
-        <Link to="/usersLogin">
-          <button>user Login</button>
-        </Link>
       </div>
     </div>
   );
